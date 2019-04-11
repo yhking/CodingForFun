@@ -1,31 +1,20 @@
 # encoding: utf-8
-
-def dec_to(n, m):
-	s = ""
-	while(n != 0):
-		s += str(n % m)
-		n //= m
-	return s
 	
-def is_real(n):
-	N = len(n)
-	M = N//2
-	i=0
-	while(i != M):
-		if n[i] != n[-(i+1)]:
-			return False
-		i += 1
-	return True
+def is_real(str_n):
+	if str_n == str_n[::-1]:
+		return True
+	else:
+		return False
 			
 	
 
 if __name__ == "__main__":
-	n = 10
+	n = 11
 	while(True):
-		if is_real(str(n)) and is_real(dec_to(n,2)) and is_real(dec_to(n,8)):
+		if is_real(str(n)) and is_real(bin(n)[2:]) and is_real(oct(n)[2:]):
 			break
 		else:
-			n += 1
+			n += 2 #奇数才有可能是回文数
 	print(n)
-	print(dec_to(n,2))
-	print(dec_to(n,8))
+	print(bin(n))
+	print(oct(n))
